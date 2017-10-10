@@ -100,20 +100,18 @@
 		<script type="text/javascript">
 			function validate(){
 				var ale = document.getElementById('ale');
+				var email = document.getElementById('in');
+				var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
 				if(document.fom.email.value == ""){
-					var em = document.fom.email.value;
-					a = em.indexOf("@");
-					b = em.lastIndexOf(".");
-
 					document.fom.email.focus();
 					document.getElementById('kata').innerHTML = "Oops!";
 					document.getElementById('maksud').innerHTML = "Email Anda Belum Terisi";
-					if (a < 1 || (b - a < 2)) {
-						document.fom.email.focus();
-						document.getElementById('kata').innerHTML = "Oops!";
-						document.getElementById('maksud').innerHTML = "Alamat Email Anda Tidak Valid";
-					}
+					ale.classList.remove('hidden');
+				}else if(!filter.test(email.value)){
+				    document.fom.email.focus();
+				    document.getElementById('kata').innerHTML = "Oops!";
+					document.getElementById('maksud').innerHTML = "Email Anda Tidak Valid";
 					ale.classList.remove('hidden');
 				}else if(document.fom.kritik.value == ""){
 					document.fom.kritik.focus();
