@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title> Training Bootstrap </title>
+		<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	</head>
+	
+	<body>
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Training Bootstrap</a>
+				</div>
+		
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse navbar-ex1-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="Home.html">Home</a></li>
+						<li><a href="Profil.html">Profil</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div>
+		</nav>
+
+		<div class="container-fluid">
+			<div class="row"> 
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
+					<div class="page-header">
+					  <h1>Hadist<small> Laroibafi </small></h1>
+					</div>
+					<img src="assets/image/Untitled-1.jpg" class="img-circle" alt="Image" width="200px">
+				</div>
+
+				<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+					<div id="ale" class="alert alert-warning hidden">
+						<button type="button" class="close" data-dismiss="alert"></button>
+						<strong id="kata">Title!</strong> <p id="maksud">Alert body ...</p>
+					</div>
+
+					<form name="fom" class="form-horizontal" role="form">
+							<div class="form-group">
+								<legend>Form title</legend>
+							</div>
+
+							<div class="form-group">
+								<label for="in" class="col-sm-2">Email : </label>
+								<div class="col-md-10">
+									<input type="email" name="email" id="in" class="form-control" placeholder="Masukan Email">
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label for="put" class="col-sm-2">Saran : </label>
+								<div class="col-md-10">
+									<textarea name="kritik" id="put" class="form-control" rows="3" placeholder="Saran & Kritik Anda"></textarea>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="col-sm-10 col-sm-offset-2">
+									<button type="button" class="btn btn-primary" onclick="return(validate());">Submit</button>
+								</div>
+							</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="modal fade" id="modal-id">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title">Pusat Resolusi</h4>
+						</div>
+						<div class="modal-body">
+							<p>Email Anda : <strong id="isi"> JAJAJAJA </strong> </p>
+							<p>Saran : <strong id="kri">JAJAJAJA</strong> </p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+			function validate(){
+				var ale = document.getElementById('ale');
+
+				if(document.fom.email.value == ""){
+					var em = document.fom.email.value;
+					a = em.indexOf("@");
+					b = em.lastIndexOf(".");
+
+					document.fom.email.focus();
+					document.getElementById('kata').innerHTML = "Oops!";
+					document.getElementById('maksud').innerHTML = "Email Anda Belum Terisi";
+					if (a < 1 || (b - a < 2)) {
+						document.fom.email.focus();
+						document.getElementById('kata').innerHTML = "Oops!";
+						document.getElementById('maksud').innerHTML = "Alamat Email Anda Tidak Valid";
+					}
+					ale.classList.remove('hidden');
+				}else if(document.fom.kritik.value == ""){
+					document.fom.kritik.focus();
+					document.getElementById('kata').innerHTML = "Oops!";
+					document.getElementById('maksud').innerHTML = "Saran Anda Belum Terisi";
+					ale.classList.remove('hidden');
+				}else{
+					ale.classList.add('hidden');
+					$("#modal-id").modal('show');
+					document.getElementById("isi").innerHTML = document.fom.email.value;
+					document.getElementById("kri").innerHTML = document.fom.kritik.value;
+				}
+			}
+		</script>
+	</body>
+</html>
