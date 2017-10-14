@@ -50,7 +50,7 @@
 
 					<form name="fom" class="form-horizontal" role="form">
 							<div class="form-group">
-								<legend>Form title</legend>
+								<legend>Masukan & Saran</legend>
 							</div>
 
 							<div class="form-group">
@@ -70,6 +70,7 @@
 							<div class="form-group">
 								<div class="col-sm-10 col-sm-offset-2">
 									<button type="button" class="btn btn-primary" onclick="return(validate());">Submit</button>
+									<button type="reset" class="btn btn-danger">Reset</button>
 								</div>
 							</div>
 					</form>
@@ -84,8 +85,19 @@
 							<h4 class="modal-title">Pusat Resolusi</h4>
 						</div>
 						<div class="modal-body">
-							<p>Email Anda : <strong id="isi"> JAJAJAJA </strong> </p>
-							<p>Saran : <strong id="kri">JAJAJAJA</strong> </p>
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="col-md-3 col-xs-4 borderv2"><h6> Email Anda : </h6></div>
+									<div class="col-md-8 col-xs-7 borderv1"> <h6 class="text-center"><strong id="isi" class="text-success"> JAJAJAJA </strong></h6> </div>
+								</div>
+							</div>
+							
+							<div class="row"> 
+								<div class="col-xs-12">
+									<div class="col-md-3 col-xs-4 borderv2"><h6> Saran : </h6></div>
+									<div class="col-md-8 col-xs-7 borderv1"><h6>&emsp;<strong id="kri"> JAJAJAJA </strong></h6></div>
+								</div>
+							</div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -97,34 +109,6 @@
 
 		<script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-		<script type="text/javascript">
-			function validate(){
-				var ale = document.getElementById('ale');
-				var email = document.getElementById('in');
-				var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-
-				if(document.fom.email.value == ""){
-					document.fom.email.focus();
-					document.getElementById('kata').innerHTML = "Oops!";
-					document.getElementById('maksud').innerHTML = "Email Anda Belum Terisi";
-					ale.classList.remove('hidden');
-				}else if(!filter.test(email.value)){
-				    document.fom.email.focus();
-				    document.getElementById('kata').innerHTML = "Oops!";
-					document.getElementById('maksud').innerHTML = "Email Anda Tidak Valid";
-					ale.classList.remove('hidden');
-				}else if(document.fom.kritik.value == ""){
-					document.fom.kritik.focus();
-					document.getElementById('kata').innerHTML = "Oops!";
-					document.getElementById('maksud').innerHTML = "Saran Anda Belum Terisi";
-					ale.classList.remove('hidden');
-				}else{
-					ale.classList.add('hidden');
-					$("#modal-id").modal('show');
-					document.getElementById("isi").innerHTML = document.fom.email.value;
-					document.getElementById("kri").innerHTML = document.fom.kritik.value;
-				}
-			}
-		</script>
+		<script type="text/javascript" src="assets/js/script.js"></script>
 	</body>
 </html>
